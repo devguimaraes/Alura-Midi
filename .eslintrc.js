@@ -4,22 +4,30 @@ module.exports = {
 		es2021: true,
 		node: true,
 	},
-	extends: [
-		'airbnb-base', 'prettier',
-		plugins: ['prettier'],
-		globals: {
-			Atomics: 'readonly',
-			SharedArrayBuffer: 'readonly',
-		},
-	],
+	extends: ['airbnb-base', 'prettier'],
+	plugins: ['prettier'],
 	parserOptions: {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
+		parser: 'babel-eslint',
 	},
+
 	rules: {
-		'class-methods-use-this': 'off', // desativa uma regra que diz que todo método de uma classe precisa usar a palavra this
-		'no-param-reassign': 'off', // desativa uma regra que diz que não é permitido receber parâmetro e fazer alterações nele
-		camelcase: 'off', // desativa uma regra que diz que toda variável precisa ser escrita no formato camelCase
-		'no-unused-vars': ['error', { argsIgnorePattern: 'next' }], // não reclamar caso a variável utilizada seja next que é usada pelos middlewares do express
+		'prettier/prettier': 'error',
+		'no-restricted-syntax': [
+			'error',
+			'ForInStatement',
+			'LabeledStatement',
+			'WithStatement',
+		],
+		'import/prefer-default-export': 'off',
+		'react/state-in-constructor': 'off',
+		'react/static-property-placement': 'off',
+		'react/jsx-props-no-spreading': 'off',
+		'react/prop-types': 'off',
+		'no-param-reassign': 'off',
+		'no-console': 'off',
+		camelcase: 'off',
+		'class-methods-use-this': 'off',
 	},
 };

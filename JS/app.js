@@ -1,7 +1,13 @@
 const teclado = document.querySelectorAll('.tecla');
 
 const setIdAudio = (idAudio) => {
-	document.querySelector(`#som_${idAudio}`).play();
+	const elemento = document.querySelector(`#som_${idAudio}`);
+
+	if (elemento && elemento.localName === 'audio') {
+		elemento.play();
+	} else {
+		console.error('O parametro passado está incorreto ou é invalido');
+	}
 };
 
 const preencherCorTecla = (atributo, classCss) => {
